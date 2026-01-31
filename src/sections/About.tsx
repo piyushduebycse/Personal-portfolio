@@ -175,7 +175,7 @@ export default function About() {
                 <div className="relative w-full h-full rounded-xl overflow-hidden glass">
                   <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-transparent" />
                   <img
-                    src="profile.png"
+                    src="Try.jpg"
                     alt="Profile"
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
