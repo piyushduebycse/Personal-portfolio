@@ -4,6 +4,8 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { SiReact, SiThreedotjs, SiTailwindcss, SiMeta, SiShopify, SiVite, SiFigma } from '@icons-pack/react-simple-icons';
+import Marquee from 'react-fast-marquee';
 
 // 3D Particle Field Component
 function ParticleField() {
@@ -165,6 +167,40 @@ function Scene() {
   );
 }
 
+const TechLogos = () => {
+  const logos = [
+    { Icon: SiReact, color: '#61DAFB' },
+    { Icon: SiThreedotjs, color: 'white' },
+    { Icon: SiTailwindcss, color: '#06B6D4' },
+    { Icon: SiMeta, color: '#0668E1' },
+    { Icon: SiShopify, color: '#95BF47' },
+    { Icon: SiVite, color: '#646CFF' },
+    { Icon: SiFigma, color: '#F24E1E' },
+  ];
+
+  return (
+    <div className="mt-8 flex flex-col items-center w-full max-w-[90vw] md:max-w-2xl mx-auto">
+      <div className="mb-4 text-sm tracking-[0.2em] font-bold uppercase">
+        <span className="text-red-600">Hands</span> <span className="text-white">On</span>
+      </div>
+      <div className="w-full px-4 py-4 rounded-2xl bg-white/5 backdrop-blur-[5px] border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out overflow-hidden">
+        <Marquee gradient={false} speed={40} pauseOnHover={true}>
+          <div className="flex items-center gap-12 pr-12">
+            {logos.map(({ Icon, color }, index) => (
+              <Icon
+                key={index}
+                className="hover:text-[var(--hover-color)] cursor-help transition-colors"
+                style={{ '--hover-color': color } as React.CSSProperties}
+                size={28}
+              />
+            ))}
+          </div>
+        </Marquee>
+      </div>
+    </div>
+  );
+};
+
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -302,6 +338,9 @@ export default function Hero() {
           <span className="text-red-500 font-medium">Web Development</span>, and{' '}
           <span className="text-red-500 font-medium">Problem Solving</span>.
         </p>
+
+        {/* Tech Logos */}
+        <TechLogos />
 
         {/* CTA Buttons */}
         <div ref={ctaRef} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
