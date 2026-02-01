@@ -22,7 +22,7 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'AI-Powered Chatbot',
+    title: 'AI-Powered Chatbot (In progress)',
     description: 'An intelligent conversational AI built with Python and TensorFlow, featuring natural language processing and context-aware responses.',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
     tags: ['Python', 'TensorFlow', 'NLP', 'React'],
@@ -42,7 +42,7 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: 'Data Visualization Dashboard',
+    title: 'Data Visualization Dashboard (In progress)',
     description: 'Interactive analytics dashboard with real-time data streaming and customizable visualizations.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
     tags: ['D3.js', 'React', 'WebSocket', 'PostgreSQL'],
@@ -52,7 +52,7 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'Cloud File Manager',
+    title: 'Cloud File Manager (In progress)',
     description: 'Secure cloud storage solution with file encryption, sharing capabilities, and version control.',
     image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=600&fit=crop',
     tags: ['AWS', 'Node.js', 'React', 'Docker'],
@@ -60,19 +60,19 @@ const projects: Project[] = [
     demo: 'https://demo.com',
     featured: false,
   },
-  //{ 
-    //id: 5,
-    //title: 'Mobile Fitness App',
-    //description: 'Cross-platform fitness tracking app with workout plans, progress tracking, and social features.',
-    //image: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800&h=600&fit=crop',
-    //tags: ['React Native', 'Firebase', 'Redux', 'Node.js'],
-    //github: 'https://github.com',
-    //demo: 'https://demo.com',
-    //featured: false,
-  //},
+  { 
+    id: 5,
+    title: 'Mobile Fitness App (In progress)',
+    description: 'Cross-platform fitness tracking app with workout plans, progress tracking, and social features.',
+    image: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800&h=600&fit=crop',
+    tags: ['React Native', 'Firebase', 'Redux', 'Node.js'],
+    github: 'https://github.com',
+    demo: 'https://demo.com',
+    featured: false,
+  },
   {
-    id: 6,
-    title: 'Blockchain Voting System',
+    id: 5,
+    title: 'Blockchain Voting System (In progress)',
     description: 'Decentralized voting platform ensuring transparency and security using smart contracts.',
     image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=600&fit=crop',
     tags: ['Solidity', 'Ethereum', 'Web3.js', 'React'],
