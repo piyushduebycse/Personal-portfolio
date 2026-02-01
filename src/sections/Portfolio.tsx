@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Tilt from 'react-parallax-tilt';
 import Marquee from 'react-fast-marquee';
 import { ExternalLink, Github, Layers, Sparkles, ArrowRight } from 'lucide-react';
-import { id } from 'date-fns/locale';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,7 +60,7 @@ const projects: Project[] = [
     demo: 'https://demo.com',
     featured: false,
   },
-  { 
+  {
     id: 5,
     title: 'Mobile Fitness App (In progress)',
     description: 'Cross-platform fitness tracking app with workout plans, progress tracking, and social features.',
