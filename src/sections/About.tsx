@@ -121,11 +121,10 @@ export default function About() {
       );
 
       // Skills animation
-      gsap.fromTo(
+      gsap.from(
         '.skill-bar',
-        { width: 0 },
         {
-          width: '100%',
+          width: 0,
           duration: 1.2,
           stagger: 0.15,
           ease: 'expo.out',
