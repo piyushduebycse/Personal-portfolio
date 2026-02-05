@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Search, Palette, Code2, TestTube, ArrowRight, Zap, type LucideIcon } from 'lucide-react';
+import { CardSpotlight } from '@/components/ui/card-spotlight';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,14 +54,14 @@ function ProcessCard({ step, index }: { step: ProcessStep; index: number }) {
       ref={cardRef}
       className={`process-card relative ${index % 2 === 0 ? 'lg:ml-auto lg:mr-[50%]' : 'lg:mr-auto lg:ml-[50%]'}`}
     >
-      <div className="glass rounded-2xl p-6 sm:p-8 hover:bg-white/[0.05] transition-all duration-500 group">
+      <CardSpotlight className="glass p-6 sm:p-8 hover:bg-white/[0.05] transition-all duration-500 group bg-transparent border-white/10" color="rgba(239, 68, 68, 0.2)">
         {/* Step Number */}
-        <div className="absolute -top-4 -left-4 w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-glow-red">
+        <div className="absolute -top-4 -left-4 w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-glow-red z-10">
           <span className="font-display text-xl text-white">{step.number}</span>
         </div>
 
         {/* Content */}
-        <div className="ml-6">
+        <div className="ml-6 relative z-10">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center group-hover:bg-red-600/20 transition-colors">
               <step.icon className="w-6 h-6 text-red-500" />
@@ -80,16 +81,12 @@ function ProcessCard({ step, index }: { step: ProcessStep; index: number }) {
             ))}
           </ul>
         </div>
-
-        {/* Hover Glow */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-red-600/0 via-red-600/5 to-red-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-      </div>
+      </CardSpotlight>
 
       {/* Connector Dot */}
       <div
-        className={`hidden lg:block absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-red-600 rounded-full shadow-glow-red ${
-          index % 2 === 0 ? '-right-[calc(50%+8px)]' : '-left-[calc(50%+8px)]'
-        }`}
+        className={`hidden lg:block absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-red-600 rounded-full shadow-glow-red ${index % 2 === 0 ? '-right-[calc(50%+8px)]' : '-left-[calc(50%+8px)]'
+          }`}
       >
         <div className="absolute inset-0 bg-red-600 rounded-full animate-ping opacity-50" />
       </div>
