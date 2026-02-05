@@ -7,6 +7,7 @@ const navItems = [
   { name: 'About', href: '#about' },
   { name: 'Portfolio', href: '#portfolio' },
   { name: 'Process', href: '#process' },
+  { name: 'Articles', href: '#blog' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -44,11 +45,10 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
             ? 'apple-glass py-3 shadow-glass'
             : 'bg-transparent py-5'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
@@ -59,7 +59,7 @@ export default function Navigation() {
               className="flex items-center gap-2 group"
             >
               <div className="relative w-10 h-10 flex items-center justify-center">
-                <div className="absolute inset-0 bg-red-600 rounded-lg transform rotate-45 group-hover:rotate-90 transition-transform duration-500"/>
+                <div className="absolute inset-0 bg-red-600 rounded-lg transform rotate-45 group-hover:rotate-90 transition-transform duration-500" />
                 <Code2 className="relative z-10 w-5 h-5 text-white" />
               </div>
               <span className="font-display text-xl tracking-wider text-white group-hover:text-red-500 transition-colors">
@@ -77,8 +77,8 @@ export default function Navigation() {
                   className="nav-item relative px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors group"
                 >
                   <span className="relative z-10">{item.name}</span>
-                  <span className="absolute inset-0 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"/>
-                  <span className="absolute bottom-1 left-4 right-4 h-px bg-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"/>
+                  <span className="absolute inset-0 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
+                  <span className="absolute bottom-1 left-4 right-4 h-px bg-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </a>
               ))}
             </div>
@@ -101,14 +101,12 @@ export default function Navigation() {
             >
               <div className="relative w-6 h-6">
                 <Menu
-                  className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
-                    isMobileMenuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
-                  }`}
+                  className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
+                    }`}
                 />
                 <X
-                  className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
-                    isMobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
-                  }`}
+                  className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
+                    }`}
                 />
               </div>
             </button>
@@ -118,9 +116,8 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
-          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
       >
         {/* Backdrop */}
         <div
@@ -135,11 +132,10 @@ export default function Navigation() {
               key={item.name}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className={`text-3xl font-display tracking-wider text-white hover:text-red-500 transition-all duration-300 ${
-                isMobileMenuOpen
+              className={`text-3xl font-display tracking-wider text-white hover:text-red-500 transition-all duration-300 ${isMobileMenuOpen
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-4'
-              }`}
+                }`}
               style={{ transitionDelay: `${index * 50 + 100}ms` }}
             >
               {item.name}
@@ -148,11 +144,10 @@ export default function Navigation() {
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, '#contact')}
-            className={`mt-6 px-8 py-3 bg-red-600 text-white font-medium rounded-full transition-all duration-300 ${
-              isMobileMenuOpen
+            className={`mt-6 px-8 py-3 bg-red-600 text-white font-medium rounded-full transition-all duration-300 ${isMobileMenuOpen
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-4'
-            }`}
+              }`}
             style={{ transitionDelay: '350ms' }}
           >
             Let&apos;s Talk

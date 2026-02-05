@@ -10,6 +10,7 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Portfolio from './sections/Portfolio';
 import WorkingProcess from './sections/WorkingProcess';
+import Blog from './sections/Blog';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
@@ -53,16 +54,16 @@ function App() {
       <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03]">
         <svg className="w-full h-full">
           <filter id="noise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" />
           </filter>
-          <rect width="100%" height="100%" filter="url(#noise)"/>
+          <rect width="100%" height="100%" filter="url(#noise)" />
         </svg>
       </div>
 
       {/* Grid Background */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-grid-pattern bg-grid bg-black"/>
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"/>
+        <div className="absolute inset-0 bg-grid-pattern bg-grid bg-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
       </div>
 
       {/* Navigation */}
@@ -74,6 +75,7 @@ function App() {
         <About />
         <Portfolio />
         <WorkingProcess />
+        <Blog />
         <Contact />
       </main>
 
