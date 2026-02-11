@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ThemeProvider } from './context/ThemeContext';
 import './App.css';
 
 // Sections
@@ -49,39 +50,41 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Noise Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03]">
-        <svg className="w-full h-full">
-          <filter id="noise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#noise)" />
-        </svg>
+    <ThemeProvider>
+      <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden transition-colors duration-300">
+        {/* Noise Overlay */}
+        <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.03] mix-blend-overlay">
+          <svg className="w-full h-full">
+            <filter id="noise">
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#noise)" />
+          </svg>
+        </div>
+
+        {/* Grid Background */}
+        <div className="fixed inset-0 pointer-events-none z-0">
+          <div className="absolute inset-0 bg-grid-pattern bg-grid [mask-image:linear-gradient(to_bottom,white,transparent)] dark:[mask-image:linear-gradient(to_bottom,white,transparent)] opacity-10 dark:opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        </div>
+
+        {/* Navigation */}
+        <Navigation />
+
+        {/* Main Content */}
+        <main className="relative z-10">
+          <Hero />
+          <About />
+          <Portfolio />
+          <WorkingProcess />
+          <Blog />
+          <Contact />
+        </main>
+
+        {/* Footer */}
+        <Footer />
       </div>
-
-      {/* Grid Background */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-grid-pattern bg-grid bg-black" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-      </div>
-
-      {/* Navigation */}
-      <Navigation />
-
-      {/* Main Content */}
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Portfolio />
-        <WorkingProcess />
-        <Blog />
-        <Contact />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </ThemeProvider>
   );
 }
 

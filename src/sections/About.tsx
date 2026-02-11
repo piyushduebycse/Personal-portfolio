@@ -154,7 +154,7 @@ export default function About() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-red-500 font-medium tracking-[0.2em] text-sm">ABOUT ME</span>
-          <h2 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl text-white">
+          <h2 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl text-foreground">
             WHO <span className="gradient-text">I AM</span>
           </h2>
           <div className="mt-4 w-24 h-1 bg-gradient-to-r from-red-600 to-transparent mx-auto" />
@@ -171,7 +171,7 @@ export default function About() {
                 <div className="absolute -inset-8 border border-red-500/10 rounded-3xl" />
 
                 {/* Image */}
-                <div className="relative w-full h-full rounded-xl overflow-hidden glass">
+                <div className="relative w-full h-full rounded-xl overflow-hidden glass dark:glass">
                   <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-transparent" />
                   <img
                     src="bitmoji.png"
@@ -193,8 +193,8 @@ export default function About() {
                       <Code className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <p className="text-white font-display text-xl">1+</p>
-                      <p className="text-white/60 text-xs">Years Coding</p>
+                      <p className="text-foreground dark:text-white font-display text-xl">1+</p>
+                      <p className="text-muted-foreground dark:text-white/60 text-xs">Years Coding</p>
                     </div>
                   </div>
                 </div>
@@ -209,17 +209,17 @@ export default function About() {
           {/* Content Column */}
           <div ref={contentRef} className="about-content space-y-8">
             <div>
-              <h3 className="font-display text-2xl sm:text-3xl text-white mb-4">
+              <h3 className="font-display text-2xl sm:text-3xl text-foreground mb-4">
                 Passionate About Building{' '}
                 <span className="text-red-500">Digital Experiences</span>
               </h3>
-              <p className="text-white/70 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 I&apos;m a Computer Science Engineering student with a deep passion for creating
                 innovative solutions that make a difference. My journey in tech started with a
                 curiosity about how things work, which evolved into a career focused on building
                 scalable, user-centric applications.
               </p>
-              <p className="text-white/70 leading-relaxed mt-4">
+              <p className="text-muted-foreground leading-relaxed mt-4">
                 With expertise in full-stack development, machine learning, and cloud technologies,
                 I bring a holistic approach to every project. I believe in writing clean, maintainable
                 code and creating intuitive user experiences.
@@ -230,10 +230,10 @@ export default function About() {
             <div className="stats-grid grid grid-cols-2 sm:grid-cols-4 gap-4">
               {stats.map((stat, index) => (
                 <TiltCard key={index} className="stat-card">
-                  <div className="glass rounded-xl p-4 text-center hover:bg-white/5 transition-colors">
+                  <div className="glass dark:glass rounded-xl p-4 text-center hover:bg-foreground/5 dark:hover:bg-white/5 transition-colors">
                     <stat.icon className="w-6 h-6 text-red-500 mx-auto mb-2" />
-                    <p className="font-display text-2xl text-white">{stat.value}</p>
-                    <p className="text-white/50 text-xs">{stat.label}</p>
+                    <p className="font-display text-2xl text-foreground">{stat.value}</p>
+                    <p className="text-muted-foreground text-xs">{stat.label}</p>
                   </div>
                 </TiltCard>
               ))}
@@ -241,17 +241,17 @@ export default function About() {
 
             {/* Skills */}
             <div className="skills-container space-y-4">
-              <h4 className="font-display text-xl text-white mb-4">Technical Skills</h4>
+              <h4 className="font-display text-xl text-foreground mb-4">Technical Skills</h4>
               {skills.map((skill, index) => (
                 <div key={index} className="space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <skill.icon className="w-4 h-4 text-red-500" />
-                      <span className="text-white/80 text-sm">{skill.name}</span>
+                      <span className="text-muted-foreground text-sm">{skill.name}</span>
                     </div>
                     <span className="text-red-500 text-sm font-medium">{skill.level}%</span>
                   </div>
-                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-2 bg-foreground/10 dark:bg-white/10 rounded-full overflow-hidden">
                     <div
                       className="skill-bar h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full"
                       style={{ width: `${skill.level}%` }}

@@ -189,17 +189,17 @@ export default function Contact() {
             height: '200%',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="contact-header text-center mb-16">
           <span className="text-red-500 font-medium tracking-[0.2em] text-sm">GET IN TOUCH</span>
-          <h2 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl text-white">
+          <h2 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl text-foreground">
             LET&apos;S <span className="gradient-text">CONNECT</span>
           </h2>
-          <p className="mt-4 text-white/60 max-w-2xl mx-auto">
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
             Have a project in mind or want to collaborate?
             I&apos;d love to hear from you.
           </p>
@@ -214,22 +214,22 @@ export default function Contact() {
               {contactInfo.map((info, index) => (
                 <div
                   key={index}
-                  className="info-card group flex items-center gap-4 p-4 glass rounded-xl hover:bg-white/5 transition-all duration-300"
+                  className="info-card group flex items-center gap-4 p-4 glass dark:glass rounded-xl hover:bg-foreground/5 dark:hover:bg-white/5 transition-all duration-300"
                 >
                   <div className="w-12 h-12 bg-red-600/20 rounded-lg flex items-center justify-center group-hover:bg-red-600/30 transition-colors">
                     <info.icon className="w-5 h-5 text-red-500" />
                   </div>
                   <div>
-                    <p className="text-white/50 text-sm">{info.label}</p>
-                    <p className="text-white font-medium">{info.value}</p>
+                    <p className="text-muted-foreground text-sm">{info.label}</p>
+                    <p className="text-foreground font-medium">{info.value}</p>
                   </div>
                 </div>
               ))}
             </div>
 
             {/* Social Links */}
-            <div className="glass rounded-xl p-6">
-              <h3 className="font-display text-xl text-white mb-4">Follow Me</h3>
+            <div className="glass dark:glass rounded-xl p-6">
+              <h3 className="font-display text-xl text-foreground mb-4">Follow Me</h3>
               <div className="flex gap-3">
                 {socialLinks.map((social, index) => (
                   <a
@@ -237,10 +237,10 @@ export default function Contact() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 glass rounded-lg flex items-center justify-center hover:bg-red-600/20 transition-all duration-300 group"
+                    className="w-12 h-12 glass dark:glass rounded-lg flex items-center justify-center hover:bg-red-600/20 transition-all duration-300 group"
                     aria-label={social.label}
                   >
-                    <social.icon className="w-5 h-5 text-white/70 group-hover:text-red-500 transition-colors" />
+                    <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-red-500 transition-colors" />
                   </a>
                 ))}
               </div>
@@ -266,29 +266,29 @@ export default function Contact() {
             <form
               ref={formRef}
               onSubmit={handleSubmit}
-              className="contact-form relative glass rounded-2xl p-6 sm:p-8 hover:bg-white/[0.03] transition-colors"
+              className="contact-form relative glass dark:glass rounded-2xl p-6 sm:p-8 hover:bg-foreground/5 dark:hover:bg-white/[0.03] transition-colors"
             >
               {/* Terminal Header */}
-              <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/10">
+              <div className="flex items-center gap-2 mb-6 pb-4 border-b border-foreground/10 dark:border-white/10">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500" />
                   <div className="w-3 h-3 rounded-full bg-green-500" />
                 </div>
-                <span className="ml-4 text-white/40 text-sm font-mono">contact_form.exe</span>
+                <span className="ml-4 text-muted-foreground text-sm font-mono">contact_form.exe</span>
               </div>
 
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
                   <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
-                  <h3 className="font-display text-2xl text-white mb-2">$ system: Signal received.</h3>
-                  <p className="text-white/60">Thank you for reaching out. I&apos;ll get back to you soon.Piyush Dubey</p>
+                  <h3 className="font-display text-2xl text-foreground mb-2">$ system: Signal received.</h3>
+                  <p className="text-muted-foreground">Thank you for reaching out. I&apos;ll get back to you soon.Piyush Dubey</p>
                 </div>
               ) : (
                 <div className="space-y-6">
                   {/* Name Field */}
                   <div className="relative">
-                    <label className="block text-white/60 text-sm mb-2 font-mono">
+                    <label className="block text-muted-foreground text-sm mb-2 font-mono">
                       <span className="text-red-500">$</span> name:
                     </label>
                     <input
@@ -299,9 +299,9 @@ export default function Contact() {
                       onFocus={() => setFocusedField('name')}
                       onBlur={() => setFocusedField(null)}
                       required
-                      className={`w-full bg-black/50 border rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none transition-all duration-300 font-mono ${focusedField === 'name'
+                      className={`w-full bg-background/50 border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground/50 focus:outline-none transition-all duration-300 font-mono ${focusedField === 'name'
                         ? 'border-red-500 shadow-glow-red'
-                        : 'border-white/10 hover:border-white/20'
+                        : 'border-foreground/10 dark:border-white/10 hover:border-foreground/20 dark:hover:border-white/20'
                         }`}
                       placeholder="Enter your name..."
                     />
@@ -309,7 +309,7 @@ export default function Contact() {
 
                   {/* Subject Field */}
                   <div className="relative">
-                    <label className="block text-white/60 text-sm mb-2 font-mono">
+                    <label className="block text-muted-foreground text-sm mb-2 font-mono">
                       <span className="text-red-500">$</span> subject:
                     </label>
                     <input
@@ -320,9 +320,9 @@ export default function Contact() {
                       onFocus={() => setFocusedField('subject')}
                       onBlur={() => setFocusedField(null)}
                       required
-                      className={`w-full bg-black/50 border rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none transition-all duration-300 font-mono ${focusedField === 'subject'
+                      className={`w-full bg-background/50 border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground/50 focus:outline-none transition-all duration-300 font-mono ${focusedField === 'subject'
                         ? 'border-red-500 shadow-glow-red'
-                        : 'border-white/10 hover:border-white/20'
+                        : 'border-foreground/10 dark:border-white/10 hover:border-foreground/20 dark:hover:border-white/20'
                         }`}
                       placeholder="Enter the subject..."
                     />
@@ -330,7 +330,7 @@ export default function Contact() {
 
                   {/* Email Field */}
                   <div className="relative">
-                    <label className="block text-white/60 text-sm mb-2 font-mono">
+                    <label className="block text-muted-foreground text-sm mb-2 font-mono">
                       <span className="text-red-500">$</span> email:
                     </label>
                     <input
@@ -341,9 +341,9 @@ export default function Contact() {
                       onFocus={() => setFocusedField('email')}
                       onBlur={() => setFocusedField(null)}
                       required
-                      className={`w-full bg-black/50 border rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none transition-all duration-300 font-mono ${focusedField === 'email'
+                      className={`w-full bg-background/50 border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground/50 focus:outline-none transition-all duration-300 font-mono ${focusedField === 'email'
                         ? 'border-red-500 shadow-glow-red'
-                        : 'border-white/10 hover:border-white/20'
+                        : 'border-foreground/10 dark:border-white/10 hover:border-foreground/20 dark:hover:border-white/20'
                         }`}
                       placeholder="Enter your email..."
                     />
@@ -351,7 +351,7 @@ export default function Contact() {
 
                   {/* Message Field */}
                   <div className="relative">
-                    <label className="block text-white/60 text-sm mb-2 font-mono">
+                    <label className="block text-muted-foreground text-sm mb-2 font-mono">
                       <span className="text-red-500">$</span> message:
                     </label>
                     <textarea
@@ -362,9 +362,9 @@ export default function Contact() {
                       onBlur={() => setFocusedField(null)}
                       required
                       rows={5}
-                      className={`w-full bg-black/50 border rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none transition-all duration-300 font-mono resize-none ${focusedField === 'message'
+                      className={`w-full bg-background/50 border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground/50 focus:outline-none transition-all duration-300 font-mono resize-none ${focusedField === 'message'
                         ? 'border-red-500 shadow-glow-red'
-                        : 'border-white/10 hover:border-white/20'
+                        : 'border-foreground/10 dark:border-white/10 hover:border-foreground/20 dark:hover:border-white/20'
                         }`}
                       placeholder="Type your message here..."
                     />

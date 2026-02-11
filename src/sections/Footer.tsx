@@ -44,7 +44,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-600/50 to-transparent" />
 
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
@@ -55,17 +55,17 @@ export default function Footer() {
                 <div className="absolute inset-0 bg-red-600 rounded-lg transform rotate-45 group-hover:rotate-90 transition-transform duration-500" />
                 <Code2 className="relative z-10 w-5 h-5 text-white" />
               </div>
-              <span className="font-display text-xl tracking-wider text-white group-hover:text-red-500 transition-colors">
+              <span className="font-display text-xl tracking-wider text-foreground group-hover:text-red-500 transition-colors">
                 PORTFOLIO
               </span>
             </a>
-            <p className="text-white/60 text-sm max-w-sm mb-6">
+            <p className="text-muted-foreground text-sm max-w-sm mb-6">
               Computer Science Engineering student passionate about building innovative
               digital solutions and creating impactful user experiences.
             </p>
             <button
               onClick={handleScrollTop}
-              className="inline-flex items-center gap-2 px-4 py-2 glass rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 group"
+              className="inline-flex items-center gap-2 px-4 py-2 glass dark:glass rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 dark:hover:bg-white/10 transition-all duration-300 group"
             >
               <span className="text-sm">Back to Top</span>
               <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
@@ -75,7 +75,7 @@ export default function Footer() {
           {/* Link Columns */}
           {footerLinks.map((column, index) => (
             <div key={index}>
-              <h3 className="font-display text-lg text-white mb-4">{column.title}</h3>
+              <h3 className="font-display text-lg text-foreground mb-4">{column.title}</h3>
               <ul className="space-y-2">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
@@ -89,7 +89,7 @@ export default function Footer() {
                       }}
                       target={link.href.startsWith('http') ? '_blank' : undefined}
                       rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="text-white/60 hover:text-red-500 text-sm transition-colors duration-300"
+                      className="text-muted-foreground hover:text-red-500 text-sm transition-colors duration-300"
                     >
                       {link.name}
                     </a>
@@ -101,12 +101,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10">
+        <div className="pt-8 border-t border-foreground/10 dark:border-white/10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-white/40 text-sm flex items-center gap-1">
+            <p className="text-muted-foreground text-sm flex items-center gap-1">
               Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by Piyush Dubey
             </p>
-            <p className="text-white/40 text-sm">
+            <p className="text-muted-foreground text-sm">
               &copy; {currentYear} All rights reserved.
             </p>
           </div>

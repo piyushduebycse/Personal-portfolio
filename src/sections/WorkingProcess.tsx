@@ -54,7 +54,7 @@ function ProcessCard({ step, index }: { step: ProcessStep; index: number }) {
       ref={cardRef}
       className={`process-card relative ${index % 2 === 0 ? 'lg:ml-auto lg:mr-[50%]' : 'lg:mr-auto lg:ml-[50%]'}`}
     >
-      <CardSpotlight className="glass p-6 sm:p-8 hover:bg-white/[0.05] transition-all duration-500 group bg-transparent border-white/10" color="rgba(239, 68, 68, 0.2)">
+      <CardSpotlight className="glass dark:glass p-6 sm:p-8 hover:bg-foreground/5 dark:hover:bg-white/[0.05] transition-all duration-500 group bg-transparent border-foreground/10 dark:border-white/10" color="rgba(239, 68, 68, 0.2)">
         {/* Step Number */}
         <div className="absolute -top-4 -left-4 w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center shadow-glow-red z-10">
           <span className="font-display text-xl text-white">{step.number}</span>
@@ -66,15 +66,15 @@ function ProcessCard({ step, index }: { step: ProcessStep; index: number }) {
             <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center group-hover:bg-red-600/20 transition-colors">
               <step.icon className="w-6 h-6 text-red-500" />
             </div>
-            <h3 className="font-display text-2xl text-white">{step.title}</h3>
+            <h3 className="font-display text-2xl text-foreground">{step.title}</h3>
           </div>
 
-          <p className="text-white/60 mb-6">{step.description}</p>
+          <p className="text-muted-foreground mb-6">{step.description}</p>
 
           {/* Details List */}
           <ul className="space-y-2">
             {step.details.map((detail, i) => (
-              <li key={i} className="flex items-center gap-2 text-white/70 text-sm">
+              <li key={i} className="flex items-center gap-2 text-muted-foreground text-sm">
                 <ArrowRight className="w-4 h-4 text-red-500" />
                 {detail}
               </li>
@@ -202,10 +202,10 @@ export default function WorkingProcess() {
         {/* Section Header */}
         <div className="process-header text-center mb-16">
           <span className="text-red-500 font-medium tracking-[0.2em] text-sm">HOW I WORK</span>
-          <h2 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl text-white">
+          <h2 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl text-foreground">
             MY <span className="gradient-text">PROCESS</span>
           </h2>
-          <p className="mt-4 text-white/60 max-w-2xl mx-auto">
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
             A structured approach to delivering high-quality solutions,
             from initial research to final deployment.
           </p>
@@ -249,9 +249,9 @@ export default function WorkingProcess() {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 glass rounded-full px-6 py-3">
+          <div className="inline-flex items-center gap-4 glass dark:glass rounded-full px-6 py-3">
             <Zap className="w-5 h-5 text-red-500" />
-            <span className="text-white/80">Ready to bring your ideas to life?</span>
+            <span className="text-muted-foreground dark:text-white/80">Ready to bring your ideas to life?</span>
             <a
               href="#contact"
               onClick={(e) => {

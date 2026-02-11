@@ -6,9 +6,10 @@ import * as THREE from 'three';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { SiReact, SiThreedotjs, SiTailwindcss, SiMeta, SiShopify, SiVite, SiFigma } from '@icons-pack/react-simple-icons';
 import Marquee from 'react-fast-marquee';
+import { useTheme } from '../context/ThemeContext';
 
 // 3D Particle Field Component
-function ParticleField() {
+function ParticleField({ theme }: { theme: 'light' | 'dark' }) {
   const meshRef = useRef<THREE.Points>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
 
@@ -68,6 +69,7 @@ function ParticleField() {
         opacity={0.8}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
+        depthWrite={false}
       />
     </points>
   );
@@ -138,22 +140,24 @@ function FloatingShapes() {
 }
 
 // 3D Scene
-function Scene() {
+function Scene({ theme }: { theme: 'light' | 'dark' }) {
   return (
     <>
-      <ambientLight intensity={0.2} />
+      <ambientLight intensity={theme === 'dark' ? 0.2 : 0.5} />
       <pointLight position={[10, 10, 10]} color="#ff0000" intensity={0.5} />
       <pointLight position={[-10, -10, -10]} color="#ff4444" intensity={0.3} />
-      <Stars
-        radius={50}
-        depth={50}
-        count={500}
-        factor={3}
-        saturation={0}
-        fade
-        speed={0.5}
-      />
-      <ParticleField />
+      {theme === 'dark' && (
+        <Stars
+          radius={50}
+          depth={50}
+          count={500}
+          factor={3}
+          saturation={0}
+          fade
+          speed={0.5}
+        />
+      )}
+      <ParticleField theme={theme} />
       <FloatingShapes />
       <OrbitControls
         enableZoom={false}
@@ -168,29 +172,27 @@ function Scene() {
 }
 
 const TechLogos = () => {
-  const logos = [
-    { Icon: SiReact, color: '#61DAFB' },
-    { Icon: SiThreedotjs, color: 'white' },
-    { Icon: SiTailwindcss, color: '#06B6D4' },
-    { Icon: SiMeta, color: '#0668E1' },
-    { Icon: SiShopify, color: '#95BF47' },
-    { Icon: SiVite, color: '#646CFF' },
-    { Icon: SiFigma, color: '#F24E1E' },
-  ];
-
   return (
     <div className="mt-8 flex flex-col items-center w-full max-w-[90vw] md:max-w-2xl mx-auto">
       <div className="mb-4 text-sm tracking-[0.2em] font-bold uppercase">
-        <span className="text-red-600">Hands</span> <span className="text-white">On</span>
+        <span className="text-red-600">Hands</span> <span className="text-foreground">On</span>
       </div>
-      <div className="w-full px-4 py-4 rounded-2xl bg-white/5 backdrop-blur-[5px] border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.1)] opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out overflow-hidden">
+      <div className="w-full px-4 py-4 rounded-2xl bg-foreground/5 backdrop-blur-[5px] border border-foreground/10 shadow-[0_0_20px_rgba(0,0,0,0.05)] dark:shadow-[0_0_20px_rgba(255,255,255,0.1)] opacity-80 dark:opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out overflow-hidden">
         <Marquee gradient={false} speed={40} pauseOnHover={true}>
           <div className="flex items-center gap-12 pr-12">
-            {logos.map(({ Icon, color }, index) => (
+            {[
+              { Icon: SiReact, color: '#61DAFB' },
+              { Icon: SiThreedotjs, color: 'var(--foreground)' },
+              { Icon: SiTailwindcss, color: '#06B6D4' },
+              { Icon: SiMeta, color: '#0668E1' },
+              { Icon: SiShopify, color: '#95BF47' },
+              { Icon: SiVite, color: '#646CFF' },
+              { Icon: SiFigma, color: '#F24E1E' },
+            ].map(({ Icon, color }, index) => (
               <Icon
                 key={index}
-                className="hover:text-[var(--hover-color)] cursor-help transition-colors"
-                style={{ '--hover-color': color } as React.CSSProperties}
+                className="hover:text-[var(--hover-color)] cursor-help transition-colors text-foreground"
+                style={{ '--hover-color': color === 'var(--foreground)' ? 'currentColor' : color } as React.CSSProperties}
                 size={28}
               />
             ))}
@@ -206,6 +208,7 @@ export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -275,18 +278,18 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* 3D Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 opacity-80 dark:opacity-100 transition-opacity duration-500">
         <Canvas
           camera={{ position: [0, 0, 8], fov: 60 }}
           dpr={[1, 2]}
           gl={{ antialias: true, alpha: true }}
         >
-          <Scene />
+          <Scene theme={theme} />
         </Canvas>
       </div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/30 via-transparent to-black pointer-events-none" />
+      {/* Gradient Overlay - Adjusted for Light Mode */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-white/30 via-transparent to-white dark:from-black/30 dark:to-black pointer-events-none transition-colors duration-500" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
@@ -300,7 +303,7 @@ export default function Hero() {
         {/* Main Title */}
         <h1
           ref={titleRef}
-          className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white leading-none mb-2 perspective-1000"
+          className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-foreground leading-none mb-2 perspective-1000"
         >
           <span className="block overflow-hidden">
             {titleText.split('').map((char, i) => (
@@ -329,7 +332,7 @@ export default function Hero() {
         {/* Subtitle */}
         <p
           ref={subtitleRef}
-          className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl mx-auto font-light"
+          className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto font-light"
         >
           Building the digital future, one line of code at a time.
           <br />
@@ -364,7 +367,7 @@ export default function Hero() {
               e.preventDefault();
               document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="px-8 py-4 glass text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300"
+            className="px-8 py-4 glass dark:glass text-foreground font-medium rounded-full hover:bg-foreground/5 transition-all duration-300"
           >
             Get In Touch
           </a>
@@ -385,7 +388,7 @@ export default function Hero() {
               className="social-icon group relative w-12 h-12 flex items-center justify-center glass rounded-full hover:bg-red-600/20 transition-all duration-300"
               aria-label={social.label}
             >
-              <social.icon className="w-5 h-5 text-white/70 group-hover:text-red-500 transition-colors" />
+              <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-red-500 transition-colors" />
             </a>
           ))}
         </div>
@@ -394,7 +397,7 @@ export default function Hero() {
       {/* Scroll Indicator */}
       <button
         onClick={handleScrollDown}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/50 hover:text-red-500 transition-colors group"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-muted-foreground hover:text-red-500 transition-colors group"
       >
         <span className="text-xs tracking-wider">SCROLL</span>
         <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center pt-2">
@@ -405,15 +408,16 @@ export default function Hero() {
       {/* Side Decorations */}
       <div className="absolute left-4 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-4">
         <div className="w-px h-20 bg-gradient-to-b from-transparent via-red-500/50 to-transparent" />
-        <span className="text-xs text-white/30 tracking-wider rotate-180 [writing-mode:vertical-lr]">
+        <span className="text-xs text-muted-foreground/30 tracking-wider rotate-180 [writing-mode:vertical-lr]">
           CSE STUDENT
         </span>
         <div className="w-px h-20 bg-gradient-to-b from-transparent via-red-500/50 to-transparent" />
       </div>
 
+      {/* Side Decorations */}
       <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-4">
         <div className="w-px h-20 bg-gradient-to-b from-transparent via-red-500/50 to-transparent" />
-        <span className="text-xs text-white/30 tracking-wider [writing-mode:vertical-lr]">
+        <span className="text-xs text-muted-foreground/30 tracking-wider [writing-mode:vertical-lr]">
           PORTFOLIO 2026
         </span>
         <div className="w-px h-20 bg-gradient-to-b from-transparent via-red-500/50 to-transparent" />

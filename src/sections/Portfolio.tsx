@@ -97,7 +97,7 @@ function ProjectCard({ project }: { project: Project }) {
       transitionSpeed={2000}
       className={`project-card relative group ${project.featured ? 'md:col-span-2 md:row-span-2' : ''} h-full`}
     >
-      <div className="relative h-full glass rounded-2xl overflow-hidden hover:bg-white/[0.05] transition-colors duration-300">
+      <div className="relative h-full glass dark:glass rounded-2xl overflow-hidden hover:bg-foreground/5 dark:hover:bg-white/[0.05] transition-colors duration-300">
         {/* Image */}
         <div className={`relative overflow-hidden ${project.featured ? 'h-64 md:h-80' : 'h-48'}`}>
           <img
@@ -117,7 +117,7 @@ function ProjectCard({ project }: { project: Project }) {
 
           {/* Hover Overlay */}
           <div
-            className="absolute inset-0 flex items-center justify-center gap-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+            className="absolute inset-0 flex items-center justify-center gap-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100 bg-black/40 backdrop-blur-sm"
           >
             <a
               href={project.github}
@@ -140,17 +140,17 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Content */}
         <div className="p-6">
-          <h3 className={`font-display text-white mb-2 ${project.featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
+          <h3 className={`font-display text-foreground mb-2 ${project.featured ? 'text-2xl md:text-3xl' : 'text-xl'}`}>
             {project.title}
           </h3>
-          <p className="text-white/60 text-sm mb-4 line-clamp-2">{project.description}</p>
+          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{project.description}</p>
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag, i) => (
               <span
                 key={i}
-                className="px-3 py-1 text-xs font-medium text-red-400 bg-red-500/10 rounded-full border border-red-500/20"
+                className="px-3 py-1 text-xs font-medium text-red-500 bg-red-500/10 rounded-full border border-red-500/20"
               >
                 {tag}
               </span>
@@ -239,10 +239,10 @@ export default function Portfolio() {
         {/* Section Header */}
         <div className="portfolio-header text-center mb-12">
           <span className="text-red-500 font-medium tracking-[0.2em] text-sm">MY WORK</span>
-          <h2 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl text-white">
+          <h2 className="mt-2 font-display text-4xl sm:text-5xl md:text-6xl text-foreground">
             FEATURED <span className="gradient-text">PROJECTS</span>
           </h2>
-          <p className="mt-4 text-white/60 max-w-2xl mx-auto">
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
             A collection of projects that showcase my skills in full-stack development,
             machine learning, and cloud technologies.
           </p>
@@ -257,7 +257,7 @@ export default function Portfolio() {
               onClick={() => setFilter(f)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${filter === f
                 ? 'bg-red-600 text-white shadow-glow-red'
-                : 'glass text-white/70 hover:text-white hover:bg-white/10'
+                : 'glass dark:glass text-muted-foreground hover:text-foreground hover:bg-foreground/5 dark:hover:bg-white/10'
                 }`}
             >
               {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -299,7 +299,7 @@ export default function Portfolio() {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 glass rounded-full text-white hover:bg-red-600/20 transition-all duration-300 group"
+            className="inline-flex items-center gap-2 px-6 py-3 glass dark:glass rounded-full text-foreground hover:bg-red-600/20 transition-all duration-300 group"
           >
             <Layers className="w-5 h-5" />
             <span>View All Projects</span>
