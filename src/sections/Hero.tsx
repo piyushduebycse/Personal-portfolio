@@ -9,7 +9,7 @@ import Marquee from 'react-fast-marquee';
 import { useTheme } from '../context/ThemeContext';
 
 // 3D Particle Field Component
-function ParticleField({ theme }: { theme: 'light' | 'dark' }) {
+function ParticleField() {
   const meshRef = useRef<THREE.Points>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
 
@@ -157,7 +157,7 @@ function Scene({ theme }: { theme: 'light' | 'dark' }) {
           speed={0.5}
         />
       )}
-      <ParticleField theme={theme} />
+      <ParticleField />
       <FloatingShapes />
       <OrbitControls
         enableZoom={false}
