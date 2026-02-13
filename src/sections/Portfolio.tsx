@@ -22,12 +22,12 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'AI-Powered Chatbot (In progress)',
-    description: 'An intelligent conversational AI built with Python and TensorFlow, featuring natural language processing and context-aware responses.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
-    tags: ['Python', 'TensorFlow', 'NLP', 'React'],
+    title: 'macOS clone',
+    description: 'macOS clone built with react js',
+    image: 'macos.png',
+    tags: ['React', 'Tailwind CSS', 'Framer Motion'],
     github: 'https://github.com',
-    demo: 'https://demo.com',
+    demo: 'https://macos-project-phi.vercel.app/',
     featured: true,
   },
   {
